@@ -29,3 +29,90 @@ algorithm: bicubic
 mesh_pps: 2,2
 zero_reference_position: 0,0
 ```
+Once the probe is properly installed, you can proceed to calibration.
+This is the sequence I use for calibration:
+
+Import or edit macro and printer configuration file using my files as reference
+
+Home the 3d printer
+Edit set backlash to 0.5 (default value) into scanner section of printer.cnf file
+launch command 
+```
+SET_GCODE_OFFSET Z=0
+```
+launch command
+```
+SAVE_CONFIG or SAVE button macro (v400 guilooz)
+```
+Home the 3d printer
+launch command 
+```
+G1 Z10 F1500
+```
+//Calibration cartographer
+launch command 
+```
+CARTOGRAPHER_TOUCH METHOD=manual (i use a feeler gauge 0.2mm)
+```
+Once finished remove the paper/gauge and click "Accept" the position.
+launch command
+```
+SAVE_CONFIG or SAVE button macro (v400 guilooz)
+```
+Home the 3d printer
+launch command
+```
+G1 Z15 F1500
+PROBE_ACCURACY
+CARTOGRAPHER_ESTIMATE_BACKLASH
+```
+Takenote of value delta and move from center to left column and launch commands
+```
+G1 Y-50 F6000
+G1 X-115 F6000
+CARTOGRAPHER_ESTIMATE_BACKLASH
+```
+Takenote of value delta and move to back calumn and launch commands
+```
+G1 Y-120 F6000
+G1 X0 F6000
+CARTOGRAPHER_ESTIMATE_BACKLASH
+```
+Takenote of value delta and move to right column and launch commands
+```
+G1 Y-60.00 F6000
+G1 X115 F6000
+CARTOGRAPHER_ESTIMATE_BACKLASH
+```
+Calculate media of all 4 values and update backlash value in "scanner" section into printer.cfg file.
+Launch commands
+```
+SAVE and restart
+BED_MESH_CALIBRATE
+SAVE and restart
+G1 Z15 F1500
+CARTOGRAPHER_THRESHOLD_SCAN 
+SAVE_CONFIG
+G1 Z10 F1500
+CARTOGRAPHER_TOUCH CALIBRATE=1 
+SAVE_CONFIG
+ ```
+//end carto calibration
+
+//calibrate v400
+launch commands
+```
+G1 Y0 F6000
+G1 X0 F6000
+G1 Z10 F1500
+CARTOGRAPHER_TOUCH
+ENDSTOPS_CALIBRATION
+SAVE_CONFIG
+DELTA_CALIBRATION
+SAVE_CONFIG
+BED_LEVELING
+SAVE_CONFIG
+PID_BED TEMP=65
+PID_HOTEND TEMP=220
+```
+//end calibration v400
