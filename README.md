@@ -8,7 +8,7 @@ I use the Guilouz Klipper version as base, link: https://github.com/Guilouz/Klip
 
 Once the probe is properly installed, do not launch the machine configuration macros, but first make sure the probe correctly reads the metal bed below it with command CARTOGRAPHER_QUERY.
 
-Remember to update the "delta_calibrate" and "bed_mesh" sections by updating the radius with a radius that allows the probe to read the plate, the standard radius is 147 but to work with this radius you need a 350mm radius plate (i buy it), with the standard 310 plate use a 120 radius
+Remember to update the "delta_calibrate" and "bed_mesh" sections by updating the radius with a radius that allows the probe to read the plate, the standard radius is 147 but to work with this radius you need a 350mm radius plate (I bought it), with the standard 310 plate use a 120 radius
 
 ```
 [delta_calibrate]
