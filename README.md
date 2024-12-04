@@ -74,6 +74,9 @@ class ScannerWrapper:
 ```
 
 Once the probe is properly installed, you can proceed to calibration.
+
+Always stay close to the printer so you can push the emergency stop if something should go wrong.
+
 This is the sequence I use for calibration:
 
 Import or edit macro and printer configuration file using my files as reference
