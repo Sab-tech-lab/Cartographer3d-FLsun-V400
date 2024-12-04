@@ -29,6 +29,50 @@ algorithm: bicubic
 mesh_pps: 2,2
 zero_reference_position: 0,0
 ```
+Before you start you need to manually edit the scanner.py file editing class ScannerWrapper adding this lines:
+```
+def get_status(self, eventtime=None):
+        return {“name”: “probe”}
+```
+The modified class should look like this:
+```
+class ScannerWrapper:
+    def __init__(self, scanner):
+        self.scanner = scanner
+
+    def get_status(self, eventtime=None):
+        return {"name": "probe"}#Alfredo
+        
+    def multi_probe_begin(self):
+        return self.scanner.multi_probe_begin()
+    def multi_probe_end(self):
+        return self.scanner.multi_probe_end()
+    def get_offsets(self):
+        return self.scanner.get_offsets()
+    def get_lift_speed(self, gcmd=None):
+        return self.scanner.get_lift_speed(gcmd)
+    def run_probe(self, gcmd):
+        return self.scanner.run_probe(gcmd)
+    def probe_prepare(self, hmove):
+        return self.scanner.probe_prepare(hmove)
+    def probe_finish(self, hmove):
+        return self.scanner.probe_finish(hmove)
+    def get_probe_params(self, gcmd=None):
+        return {'probe_speed': self.scanner.probe_speed,
+            'lift_speed': self.scanner.lift_speed}
+    def start_probe_session(self, gcmd):
+        self.multi_probe_begin()
+        self.scanner.results=[]
+        return self
+    def end_probe_session(self):
+        self.scanner.results = []
+        self.multi_probe_end()
+    def pull_probed_results(self):
+        res = self.scanner.results
+        self.scanner.results = []
+        return res
+```
+
 Once the probe is properly installed, you can proceed to calibration.
 This is the sequence I use for calibration:
 
