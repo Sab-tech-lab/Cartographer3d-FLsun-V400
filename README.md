@@ -165,3 +165,7 @@ PID_BED TEMP=65
 PID_HOTEND TEMP=220
 ```
 //end calibration v400
+
+> :warning: Remember to set z-offset value adding at least 0.15 mm, just use the video below as an example:
+
+https://docs.cartographer3d.com/cartographer-probe/installation-and-setup/installation/first-print
