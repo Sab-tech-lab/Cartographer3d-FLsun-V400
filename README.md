@@ -6,6 +6,8 @@ Before you start consult the official documentation carefully.
 Remember that Cartographer touch survey needs a metal bed under the probe to work properly.
 I use the Guilouz Klipper version as base, link: https://github.com/Guilouz/Klipper-Flsun-Speeder-Pad/wiki
 
+> :warning: The setup work is not finished yet, there are still some small problems with the automatic offset calculation, before launching a print make sure you are close to the 3d printer and correctly set the z-offset to a conservative value not to damage the printing plate
+
 Once the probe is properly installed, do not launch the machine configuration macros, but first make sure the probe correctly reads the metal bed below it with command CARTOGRAPHER_QUERY.
 
 Remember to update the "delta_calibrate" and "bed_mesh" sections by updating the radius with a radius that allows the probe to read the plate, the standard radius is 147 but to work with this radius you need a 350mm radius plate (I bought it), with the standard 310 plate use a 120 radius or minus.
