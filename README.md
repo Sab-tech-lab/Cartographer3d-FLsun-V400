@@ -1,5 +1,7 @@
 # Cartographer3d-FLsun-V400
-Cartographer3d probe configuration files for FLSUN V400
+Cartographer3d probe configuration files for FLSUN V400.
+Cartographer firmware 5.1.
+Klipper version v0.12.0-396-gb7233d11
 
 Cartographer3d probably wasn't designed with delta printers in mind, but with a little work I was able to make it work.
 Before you start consult the official documentation carefully.
@@ -101,7 +103,7 @@ G1 Z10 F1500
 //Calibration cartographer
 launch command 
 ```
-CARTOGRAPHER_TOUCH METHOD=manual (i use a feeler gauge 0.2mm)
+CARTOGRAPHER_CALIBRATE METHOD=manual (i use a feeler gauge 0.2mm)
 ```
 Once finished remove the paper/gauge and click "Accept" the position.
 launch command
@@ -143,7 +145,7 @@ G1 Z15 F1500
 CARTOGRAPHER_THRESHOLD_SCAN 
 SAVE_CONFIG
 G1 Z10 F1500
-CARTOGRAPHER_TOUCH CALIBRATE=1 
+CARTOGRAPHER_CALIBRATE 
 SAVE_CONFIG
  ```
 //end carto calibration
