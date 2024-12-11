@@ -1,6 +1,8 @@
 # Cartographer3d-FLsun-V400
 Cartographer3d probe configuration files for FLSUN V400.
+
 Cartographer firmware 5.1.
+
 Klipper version v0.12.0-396-gb7233d11
 
 Cartographer3d probably wasn't designed with delta printers in mind, but with a little work I was able to make it work.
@@ -12,11 +14,21 @@ I use the Guilouz Klipper version as base, link: https://github.com/Guilouz/Klip
 
 Once the probe is properly installed, do not launch the machine configuration macros, but first make sure the probe correctly reads the metal bed below it with command CARTOGRAPHER_QUERY.
 
-> :warning: Remember to update the "delta_calibrate" and "bed_mesh" sections by updating the radius with a radius that allows the probe to read the plate, the standard radius is 147 but to work with this radius you need a 350mm radius plate (I bought it), with the standard 310 plate use a 120 radius or minus.
+> :warning: Remember to update the "delta_calibrate" and "bed_mesh" sections by updating the radius with a radius that allows the probe to read the metal bed, the standard radius is 147 but to work with this radius you need a 350mm radius plate (I bought it), with the standard 310 plate use a 120 radius or minus.
 
 Check if proble read the bed with command "CARTOGRAPHER_QUERY", remember that the probe is set back from the nozzle, check that the coil has the metal plate underneath it.
-Controls the limit positions of the printhead by moving it to different positions and probing the probe reading.
+Controls the limit positions of the printhead by moving it to different positions and use command "CARTOGRAPHER_QUERY".
 
+Cartographer output query must be like this:
+```
+Last reading: 3055985.84Hz, 21.11C, 2.32431mm
+```
+If the probe are outside of the metal bed the output is like this:
+```
+Last reading: 3003686.43Hz, 21.20C, infmm
+```
+
+Radius values into printer.cnf
 ```
 [delta_calibrate]
 radius: 147 #120 #147
@@ -50,7 +62,7 @@ SET_GCODE_OFFSET Z=0
 ```
 launch command
 ```
-SAVE_CONFIG or SAVE button macro (v400 guilooz)
+SAVE_CONFIG or SAVE button macro (v400 Guilouz)
 ```
 Home the 3d printer
 launch command 
