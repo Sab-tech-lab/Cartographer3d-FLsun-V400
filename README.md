@@ -1,4 +1,6 @@
 # Cartographer3d-FLsun-V400
+> :warning: During the tests I found some anomalous behaviors, I'm trying to figure out what's not working in the bed leveling. Use this mod responsibly while waiting for Cartographer 3D to officially support delta printers.
+
 Cartographer3d probe configuration files for FLSUN V400.
 
 Cartographer firmware 5.1.
